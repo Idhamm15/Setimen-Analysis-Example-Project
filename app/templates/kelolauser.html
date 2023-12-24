@@ -1,0 +1,138 @@
+{% include 'headerAdmin.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Admin Kelola User</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+    <style>
+        .card-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      </style>
+      <style>
+        .card-body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+        form-control {
+        width: 100%;
+        max-width: 400px; /* Sesuaikan dengan lebar yang diinginkan */
+        }
+      </style>
+</head>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tambah User</h6>
+    </div>
+    <div class="card-body">
+      <form action="/kelolauser/result" method="POST">
+        <label for="username">Username</label>
+        <br><input type="text" id="username" name="username" required><br>
+        
+        <label for="password">Password</label>
+        <br><input type="password" id="password" name="password" required><br>
+
+        <label for="email">Email</label>
+        <br><input type="email" id="email" name="email" required><br>
+
+        <label for="role">Role</label>
+        <br>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="role" name="role" required>
+          <option selected>Role</option>
+          <option value="user">User</option>
+        <option value="admin">Admin</option> 
+        </select>
+        <br>
+        <!-- <label for=""></label>
+        <select id="" name="">
+        <br><option value="">Pilih</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option> -->
+
+        <!-- <label for="role">Role</label>
+        <select id="role" name="role">
+            <option value="">Pilih</option>
+            {% for role in roles %}
+                <option value="{{ role[0] }}">{{ role[0] }}</option>
+            {% endfor %}
+        </select> -->
+
+        <br><input type="submit" value="Tambah">
+    </form>
+
+        <!-- <div class="mt-3">
+          <button class="btn btn-primary" value="tesmodel">Tes Model</button>
+        </div> -->
+      </form>
+    </div>
+  </div>
+<body>
+    <!-- <h1>Kelola User</h1> -->
+    
+    <!-- Formulir Tambah User -->
+    <!-- <h2>Tambah User</h2> -->
+    <!-- <form action="proses_tambah.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <input type="submit" value="Tambah">
+    </form> -->
+
+    <br>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Table Daftar User</h6>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for table in tables %}
+              <tr>
+                  <td>{{ table.username }}</td>
+                  <td>{{ table.email }}</td>
+                  <td>*********</td>
+                  <!-- <td>{{ table.password }}</td> -->
+                  <td>{{ table.role }}</td>
+                  <td>
+                    <!-- <a  class="btn btn-primary" href="/editTesModel/{{table.id}}">Edit</a> -->
+                    <a  class="btn btn-danger" href="/hapususer/{{table.username}}">
+                      Delete</a>
+                </td>
+                  <!-- Add more columns as needed -->
+              </tr>
+              
+              {% endfor %}
+          </tbody>
+        </table>
+        </div>
+        </div>
+</body>
+</html>

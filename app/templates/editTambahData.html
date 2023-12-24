@@ -1,0 +1,38 @@
+{% include 'headerAdmin.html' %}
+<html>
+<head>
+    <title>Edit Tes Model</title>
+</head>
+<body>
+    
+    <h1 style="margin-left: 30px;">Edit Tes Model</h1>
+    <form method="POST" action="{{ url_for('editTambahData', id=tes_model.id) }}" style="margin-left: 30px;">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+        <!-- <label for="{{ form.label.id }}">{{ form.label.label }}</label>
+        {{ form.label() }}<br> -->
+                <!-- <label for="{{ form.label.id }}">{{ form.label.label }}</label>
+        <select id="{{ form.label.id }}" name="{{ form.label.name }}">
+        {% for option in form.label.choices %}
+            <option value="{{ option.value }}" {% if option.value == form.label.data %}selected{% endif %}>{{ option.label }}</option>
+        {% endfor %}
+        </select> -->
+        <label for="{{ form.label.id }}">{{ form.label.label }}</label>
+        <select id="{{ form.label.id }}" name="{{ form.label.name }}">
+        <option value="">Pilih</option>
+        <option value="positif">positif</option>
+        <option value="negatif">negatif</option>
+        <option value="netral">netral</option>
+        <!-- Tambahkan opsi lainnya sesuai kebutuhan -->
+        </select>
+        <label for="{{ form.Tweet.id }}" disabled>{{ form.Tweet.label }}</label>
+        {{ form.Tweet(style="width: 400px;", disabled=True) }}<br>
+        <!-- Add other fields of your TesModelForm -->
+        <input type="submit" value="Update">
+        <!-- <input type="submit" value="Cancel"> -->
+        <a  class="btn btn-danger" href="/tambahDataAdmin">
+            Cancel</a>
+        <!-- <a class="nav-link" href="/tesmodelAdmin">>Cancel</a> -->
+        <!-- <a class="nav-link" href="/logout"></a> -->
+    </form>
+</body>
